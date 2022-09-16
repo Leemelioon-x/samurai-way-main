@@ -1,0 +1,34 @@
+
+.profile_bigPhoto{
+    width: 100%;
+    height: 300px;
+    margin-bottom: 10px;
+}
+
+.profile_bigPhoto img{
+    height: 100%;
+    width: 100%;
+
+}
+
+.profile_photo{
+    width: 100%;
+    display: flex;
+
+}
+
+.profile_photo img{
+    width: 150px;
+
+
+}
+
+.profile_name{
+    font-size: 40px;
+    padding-left: 10px;
+}
+
+.profile_info{
+
+}
+
