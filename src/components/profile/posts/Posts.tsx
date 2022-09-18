@@ -5,27 +5,28 @@ import {Post} from "./post/Post";
 type postsPropsType={
     posts:Array<postsType>
     addPost:(newPostMessage:string)=>void
+    updateNewPostText:(newText:string)=>void
+    newText:string
 }
 
 type postsType={
     id:number
     post:string
+
 }
 
 
 
 export const Posts = (props:postsPropsType) => {
 
-  const  [value,setValue]=useState("")
-
     const onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
-        setValue(e.currentTarget.value)
+        let text=e.currentTarget.value
+        props.updateNewPostText(text)
     }
 
-    const addPost=(value:string)=>{
-        props.addPost(value)
-        setValue("")
-
+    const addPost=(newText:string)=>{
+        props.addPost(newText)
+        props.updateNewPostText('')
     }
 
 
@@ -34,8 +35,8 @@ export const Posts = (props:postsPropsType) => {
         <div>
             My posts
            <Post posts={props.posts}/>
-            <input value={value} type="text" onChange={onChangeHandler}/>
-            <button  onClick={()=>addPost(value)}>Add Post</button>
+            <input value={props.newText} type="text" onChange={onChangeHandler}/>
+            <button  onClick={()=>addPost(props.newText)}>Add Post</button>
         </div>
     );
 };

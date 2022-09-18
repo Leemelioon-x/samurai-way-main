@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import {addPost} from "./redux/state";
+import {addPost, updateNewPostText} from "./redux/state";
 
 type appState = {
     profileUsersPage: profileUsers
@@ -25,6 +25,7 @@ type messageType = {
 type profileUsers = {
     profileUsers: Array<profileUsersType>
     posts:Array<postsType>
+    newPostText:string
 }
 
 type postsType={
@@ -51,7 +52,7 @@ type userInfoType = {
 export let renderEntireTree = (state:appState) => {
 
     ReactDOM.render(
-        <App appState={state} addPost={addPost}/>,
+        <App appState={state} addPost={addPost} updateNewPostText={updateNewPostText}/>,
         document.getElementById('root')
     );
 }

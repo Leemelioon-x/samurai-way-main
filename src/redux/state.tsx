@@ -19,7 +19,8 @@ export const state = {
             {id:1, post:"Hi"},
             {id:2, post:"It's my firs post"},
             {id:3, post:"My name Kirill"},
-        ]
+        ],
+        newPostText:'Введите сообщение'
     },
     dialogsPage: {
         message: [
@@ -41,4 +42,9 @@ export let addPost=(newPostMessage:string)=>{
     }
     state.profileUsersPage.posts.push(newPost)
       renderEntireTree(state);
+}
+
+export let updateNewPostText=(newText:string)=>{
+    state.profileUsersPage.newPostText = newText;
+    renderEntireTree(state);
 }

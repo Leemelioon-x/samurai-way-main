@@ -5,11 +5,13 @@ import {Navigation} from "./components/navigation/Navigation";
 import {Profile} from "./components/profile/Profile";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
+import {updateNewPostText} from "./redux/state";
 
 
 type AppPropsType = {
     appState: appState
     addPost:(newPostMessage:string)=>void
+    updateNewPostText:(newText:string)=>void
 }
 
 type appState = {
@@ -33,6 +35,7 @@ type messageType = {
 type profileUsers = {
     profileUsers: Array<profileUsersType>
     posts:Array<postsType>
+    newPostText:string
 }
 
 type postsType={
@@ -71,8 +74,10 @@ function App(props: AppPropsType) {
                            render={() =>
                                <Profile users={
                                    props.appState.profileUsersPage.profileUsers}
+                                        newText={props.appState.profileUsersPage.newPostText}
                                         posts={props.appState.profileUsersPage.posts}
                                         addPost={props.addPost}
+                                        updateNewPostText={props.updateNewPostText}
                                />}
                     />
                 </div>
