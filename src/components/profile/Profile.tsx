@@ -2,35 +2,15 @@ import React from 'react';
 import classes from "./Profile.module.css";
 import {Posts} from "./posts/Posts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import {updateNewPostText} from "../../redux/state";
+import { PostsType, ProfileUsersType} from "../../redux/store";
 
 type ProfilePropsType = {
-    users: Array<ProfileUserType>
-    posts:Array<postsType>
+    users: Array<ProfileUsersType>
+    posts:Array<PostsType>
     newText:string
-    addPost:(newPostMessage:string)=>void
-    updateNewPostText:(newText:string)=>void
+    dispatch:(action:any)=>void
 }
 
-type postsType={
-    id:number
-    post:string
-}
-
-type ProfileUserType = {
-    id: number,
-    name: string,
-    bigPhoto: string
-    photo: string,
-    userInfo: UserInfoType
-}
-
-type UserInfoType = {
-    dataOfBirth: string,
-    city: string,
-    education: string,
-    webSite: string
-}
 
 
 export const Profile = (props: ProfilePropsType) => {
@@ -39,8 +19,8 @@ export const Profile = (props: ProfilePropsType) => {
 
             <ProfileInfo users={props.users}/>
 
-            <Posts posts={props.posts} addPost={props.addPost}
-                   updateNewPostText={props.updateNewPostText}
+            <Posts posts={props.posts}
+                   dispatch={props.dispatch}
                    newText={props.newText}/>
 
         </div>

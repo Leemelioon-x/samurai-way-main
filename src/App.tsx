@@ -5,58 +5,15 @@ import {Navigation} from "./components/navigation/Navigation";
 import {Profile} from "./components/profile/Profile";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
-import {updateNewPostText} from "./redux/state";
+import {appState} from './redux/store'
+
 
 
 type AppPropsType = {
-    appState: appState
-    addPost:(newPostMessage:string)=>void
-    updateNewPostText:(newText:string)=>void
+    store: appState
+    dispatch: (action: any) => void
 }
 
-type appState = {
-    profileUsersPage: profileUsers
-    dialogsPage: dialogsType
-}
-
-type dialogsType = {
-    message: Array<messageType>
-    dialogs: Array<dialogType>
-}
-
-type dialogType={}
-
-type messageType = {
-    id: string
-    name: string
-    message: string
-}
-
-type profileUsers = {
-    profileUsers: Array<profileUsersType>
-    posts:Array<postsType>
-    newPostText:string
-}
-
-type postsType={
-    id:number
-    post:string
-}
-
-type profileUsersType = {
-    id: number
-    name: string
-    bigPhoto: string
-    photo: string
-    userInfo: userInfoType
-}
-
-type userInfoType = {
-    dataOfBirth: string
-    city: string
-    education: string
-    webSite: string
-}
 
 function App(props: AppPropsType) {
     return (
@@ -66,18 +23,18 @@ function App(props: AppPropsType) {
                 <Navigation/>
                 <div className="App_content">
                     <Route path={'/dialogs'} render={() =>
-                        <Dialogs dialogsPage={
-                            props.appState.dialogsPage}
+                        <Dialogs dialogsPage={props.store.dialogsPage}
+                                 newMessageBody={props.store.dialogsPage.newMessageBody}
+                                 dispatch={props.dispatch}
                         />}
                     />
                     <Route path={'/profile'}
                            render={() =>
                                <Profile users={
-                                   props.appState.profileUsersPage.profileUsers}
-                                        newText={props.appState.profileUsersPage.newPostText}
-                                        posts={props.appState.profileUsersPage.posts}
-                                        addPost={props.addPost}
-                                        updateNewPostText={props.updateNewPostText}
+                                   props.store.profileUsersPage.profileUsers}
+                                        newText={props.store.profileUsersPage.newPostText}
+                                        posts={props.store.profileUsersPage.posts}
+                                        dispatch={props.dispatch}
                                />}
                     />
                 </div>

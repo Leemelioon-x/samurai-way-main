@@ -18,3 +18,8 @@
 .message {
 
 }
+
+.send_message{
+    display: flex;
+    justify-content: center;
+}

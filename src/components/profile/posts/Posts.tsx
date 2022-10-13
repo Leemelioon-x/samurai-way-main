@@ -1,42 +1,37 @@
-import React, {ChangeEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import classes from "./Posts.module.css";
 import {Post} from "./post/Post";
+import { addPostActionCreator, updateNewPostTextActionCreator} from "../../../redux/profileUsersPage-reducer";
+import {PostsType} from "../../../redux/store";
 
-type postsPropsType={
-    posts:Array<postsType>
-    addPost:(newPostMessage:string)=>void
-    updateNewPostText:(newText:string)=>void
-    newText:string
-}
 
-type postsType={
-    id:number
-    post:string
-
+type postsPropsType = {
+    posts: Array<PostsType>
+    dispatch: (action: any) => void
+    newText: string
 }
 
 
+export const Posts = (props: postsPropsType) => {
 
-export const Posts = (props:postsPropsType) => {
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+        let text: string = e.currentTarget.value
+        props.dispatch(updateNewPostTextActionCreator(text))
 
-    const onChangeHandler=(e:ChangeEvent<HTMLInputElement>)=>{
-        let text=e.currentTarget.value
-        props.updateNewPostText(text)
     }
 
-    const addPost=(newText:string)=>{
-        props.addPost(newText)
-        props.updateNewPostText('')
+    const addPost = (newText: string) => {
+        props.dispatch(addPostActionCreator(newText))
+        props.dispatch(updateNewPostTextActionCreator(""))
     }
-
 
 
     return (
-        <div>
+        <div className={classes.post_table}>
             My posts
-           <Post posts={props.posts}/>
-            <input value={props.newText} type="text" onChange={onChangeHandler}/>
-            <button  onClick={()=>addPost(props.newText)}>Add Post</button>
+            <Post posts={props.posts}/>
+            <input value={props.newText} type="text" placeholder={"Введите текст"} onChange={onChangeHandler}/>
+            <button onClick={() => addPost(props.newText)}>Add Post</button>
         </div>
     );
 };
