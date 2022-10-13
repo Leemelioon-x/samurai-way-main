@@ -10,5 +10,5 @@ const reducer=combineReducers({
 })
 
 const store =createStore(reducer);
-export type storeType= typeof store
+export type StoreType= typeof store
 export default store;

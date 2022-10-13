@@ -13,34 +13,34 @@ export type appState = {
     profileUsersPage: profileUsers
     dialogsPage: dialogsType
 }
-export type dialogsType = {
+ type dialogsType = {
     message: Array<messageType>
     dialogs: Array<dialogType>
     newMessageBody: string
 }
-export type dialogType = {}
-export type messageType = {
+ type dialogType = {}
+ type messageType = {
     id: string
     name: string
     message: string
 }
-export type profileUsers = {
+ type profileUsers = {
     profileUsers: Array<ProfileUsersType>
     posts: Array<PostsType>
     newPostText: string
 }
-export type PostsType = {
+ type PostsType = {
     id: number
     post: string
 }
-export type ProfileUsersType = {
+ type ProfileUsersType = {
     id: number
     name: string
     bigPhoto: string
     photo: string
     userInfo: UserInfoType
 }
-export type UserInfoType = {
+ type UserInfoType = {
     dataOfBirth: string
     city: string
     education: string

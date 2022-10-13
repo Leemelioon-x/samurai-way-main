@@ -2,7 +2,8 @@ import React from 'react';
 import classes from "./Profile.module.css";
 import {Posts} from "./posts/Posts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
-import { PostsType, ProfileUsersType} from "../../redux/store";
+import {PostsType, ProfileUsersType} from "../../redux/profileUsersPage-reducer";
+
 
 type ProfilePropsType = {
     users: Array<ProfileUsersType>

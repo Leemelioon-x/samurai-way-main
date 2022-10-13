@@ -1,15 +1,35 @@
-import {profileUsers} from "./store";
+
+export type UserInfoType = {
+    dataOfBirth: string
+    city: string
+    education: string
+    webSite: string
+}
+export type PostsType = {
+    id: number
+    post: string
+}
+export type ProfileUsersType = {
+    id: number
+    name: string
+    bigPhoto: string
+    photo: string
+    userInfo: UserInfoType
+}
+export type profileUsers = {
+    profileUsers: Array<ProfileUsersType>
+    posts: Array<PostsType>
+    newPostText: string
+}
 
 const ADD_POST = 'ADD-POST';
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 
 export type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextActionCreator>
 export type AddPostActionType = ReturnType<typeof addPostActionCreator>
-
 export type profileUsersPageACType = UpdateNewPostTextActionType | AddPostActionType
 
-
-let initialState={
+let initialState:profileUsers={
     profileUsers: [{
         id: 1,
         name: "Martynchuk Kirill",
