@@ -3,6 +3,7 @@ import classes from "./Profile.module.css";
 import {Posts} from "./posts/Posts";
 import {ProfileInfo} from "./profileInfo/ProfileInfo";
 import {PostsType, ProfileUsersType} from "../../redux/profileUsersPage-reducer";
+import {PostsContainer} from "./posts/PostsContainer";
 
 
 type ProfilePropsType = {
@@ -20,7 +21,7 @@ export const Profile = (props: ProfilePropsType) => {
 
             <ProfileInfo users={props.users}/>
 
-            <Posts posts={props.posts}
+            <PostsContainer posts={props.posts}
                    dispatch={props.dispatch}
                    newText={props.newText}/>
 

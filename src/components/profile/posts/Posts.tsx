@@ -7,22 +7,22 @@ import {addPostActionCreator, PostsType, updateNewPostTextActionCreator} from ".
 
 type postsPropsType = {
     posts: Array<PostsType>
-    dispatch: (action: any) => void
     newText: string
+    updateNewPostText:(text:string)=>void
+    addPost:(text:string)=>void
 }
 
 
 export const Posts = (props: postsPropsType) => {
 
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-        let text: string = e.currentTarget.value
-        props.dispatch(updateNewPostTextActionCreator(text))
+       props.updateNewPostText(e.currentTarget.value)
 
     }
 
     const addPost = (newText: string) => {
-        props.dispatch(addPostActionCreator(newText))
-        props.dispatch(updateNewPostTextActionCreator(""))
+        props.addPost(newText)
+        props.updateNewPostText('')
     }
 
 
@@ -30,7 +30,10 @@ export const Posts = (props: postsPropsType) => {
         <div className={classes.post_table}>
             My posts
             <Post posts={props.posts}/>
-            <input value={props.newText} type="text" placeholder={"Введите текст"} onChange={onChangeHandler}/>
+            <input value={props.newText}
+                   type="text"
+                   placeholder={"Введите текст"}
+                   onChange={onChangeHandler}/>
             <button onClick={() => addPost(props.newText)}>Add Post</button>
         </div>
     );

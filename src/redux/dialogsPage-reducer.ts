@@ -24,11 +24,11 @@ let initialState:dialogsType={
             {id: "2", name: "Kirill", message: "My name Kirill"},
             {id: "3", name: "Kirill", message: "I'm programmist"},
             {id: "4", name: "Alex", message: "OK"},
-        ],
+        ]as Array<messageType> ,
         newMessageBody: "",
         dialogs: [
             {}
-        ]
+        ]as Array<dialogType>
 
 }
 

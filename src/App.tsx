@@ -6,6 +6,9 @@ import {Profile} from "./components/profile/Profile";
 import {Dialogs} from "./components/dialogs/Dialogs";
 import {BrowserRouter, Route} from "react-router-dom";
 import {getStoreType} from "./components/renderTree";
+import {DialogsContainer} from "./components/dialogs/DialogsContainer";
+
+
 
 
 
@@ -24,10 +27,8 @@ function App(props: AppPropsType) {
                 <Navigation/>
                 <div className="App_content">
                     <Route path={'/dialogs'} render={() =>
-                        <Dialogs dialogsPage={props.store.dialogsPageReducer}
-                                 newMessageBody={props.store.dialogsPageReducer.newMessageBody}
-                                 dispatch={props.dispatch}
-                        />}
+                        <DialogsContainer/>
+                    }
                     />
                     <Route path={'/profile'}
                            render={() =>

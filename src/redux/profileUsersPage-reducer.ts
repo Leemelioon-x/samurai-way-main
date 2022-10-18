@@ -41,12 +41,12 @@ let initialState:profileUsers={
             education: "BNTU",
             webSite: "https://vk.com/leemelioon"
         }
-    }],
+    }] as Array<ProfileUsersType>,
         posts: [
         {id: 1, post: "Hi"},
         {id: 2, post: "It's my firs post"},
         {id: 3, post: "My name Kirill"},
-    ],
+    ]as Array<PostsType> ,
         newPostText: ''
 }
 
